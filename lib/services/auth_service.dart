@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:api/api/api_key.dart';
 import 'package:api/model/user_model.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthService {
   final client = http.Client();
@@ -23,6 +24,8 @@ class AuthService {
       if (response.statusCode == 200) {
         final result = jsonDecode(response.body);
         final UserModel user = UserModel.fromJson(result);
+        SharedPreferences _pref = await SharedPreferences.getInstance();
+        _pref.setString('token', user.token.toString());
         return user;
       } else {
         print("Request failed with status code ${response.statusCode}");
