@@ -34,10 +34,10 @@ class Products {
   int? id;
   String? title;
   String? description;
-  int? price;
-  double? discountPercentage;
-  double? rating;
-  int? stock;
+  var price;
+  var discountPercentage;
+  var rating;
+  var stock;
   String? brand;
   String? category;
   String? thumbnail;
@@ -70,5 +70,19 @@ class Products {
     images = json['images'].cast<String>();
   }
 
-  
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id;
+    data['title'] = this.title;
+    data['description'] = this.description;
+    data['price'] = this.price;
+    data['discountPercentage'] = this.discountPercentage;
+    data['rating'] = this.rating;
+    data['stock'] = this.stock;
+    data['brand'] = this.brand;
+    data['category'] = this.category;
+    data['thumbnail'] = this.thumbnail;
+    data['images'] = this.images;
+    return data;
+  }
 }

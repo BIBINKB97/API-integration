@@ -23,6 +23,7 @@ class ProductService {
       if (response.statusCode == 200) {
         final responseBody = jsonDecode(response.body);
         final ProductModel product = ProductModel.fromJson(responseBody);
+        print(product);
         return product;
       }
     } catch (er) {
