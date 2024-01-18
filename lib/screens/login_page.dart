@@ -1,3 +1,4 @@
+import 'package:api/screens/home_page.dart';
 import 'package:api/services/auth_service.dart';
 import 'package:flutter/material.dart';
 
@@ -11,8 +12,8 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   bool isVisible = true;
   final loginKey = GlobalKey<FormState>();
- final TextEditingController _usernameController = TextEditingController();
- final  TextEditingController  _passwordController = TextEditingController();
+  final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
   @override
   void dispose() {
@@ -94,7 +95,12 @@ class _LoginPageState extends State<LoginPage> {
                               _usernameController.text,
                               _passwordController.text);
 
-                          print(user!.token);
+                          if (user != null) {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => HomePage(user:user ,)),);
+                          }
                         }
                       },
                       child: Text("Login"))
