@@ -33,25 +33,34 @@ class _HomePageState extends State<HomePage> {
                 final ProductModel productmodel = snapshot.data!;
                 final products = productmodel.products;
 
-                return GridView.builder(
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2),
+                return ListView.separated(
+                    separatorBuilder: (BuildContext context, int index) {
+                      return Divider(
+                        endIndent: 10,
+                        indent: 10,
+                      );
+                    },
                     itemCount: products!.length,
                     itemBuilder: (context, index) {
                       final product = products[index];
-                      return Card(
-                          child: Column(
-                        children: [
-                          ListTile(
-                            leading: CircleAvatar(
-                              backgroundImage: NetworkImage(product.images![0]),
-                            ),
-                            title: Text("${product.title}"),
-                            subtitle: Text("${product.rating}"),
-                          ),
-                          Text(product.description!)
-                        ],
-                      ));
+                      return ListTile(
+                        leading: Container(
+                          width: 100,
+                          decoration: BoxDecoration(
+                              color: Colors.amber,
+                              image: DecorationImage(
+                                  fit: BoxFit.fill,
+                                  image: NetworkImage(product.images![0]))),
+                        ),
+                        title: Column(
+                          children: [
+                            Text(product.brand!),
+                            Text(product.title!),
+                            Text(product.category!),
+                            Text(product.brand!),
+                          ],
+                        ),
+                      );
                     });
               }
               return Center(child: CircularProgressIndicator());
