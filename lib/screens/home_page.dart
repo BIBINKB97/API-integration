@@ -45,20 +45,40 @@ class _HomePageState extends State<HomePage> {
                       final product = products[index];
                       return ListTile(
                         leading: Container(
-                          width: 100,
+                          width: 90,
                           decoration: BoxDecoration(
-                              color: Colors.amber,
                               image: DecorationImage(
                                   fit: BoxFit.fill,
                                   image: NetworkImage(product.images![0]))),
                         ),
                         title: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(product.brand!),
-                            Text(product.title!),
-                            Text(product.category!),
-                            Text(product.brand!),
+                            Text(
+                              product.brand!,
+                              style: TextStyle(
+                                  fontSize: 18, fontWeight: FontWeight.w500),
+                            ),
+                            Text(
+                              product.title!,
+                              style: TextStyle(
+                                  fontSize: 18, fontWeight: FontWeight.w400),
+                            ),
+                            Text(
+                              product.category!,
+                              style: TextStyle(
+                                  fontSize: 18, fontWeight: FontWeight.w400),
+                            ),
+                            Text(
+                              product.description!,
+                              style: TextStyle(
+                                  fontSize: 15, fontWeight: FontWeight.w300),
+                            ),
                           ],
+                        ),
+                        trailing: Padding(
+                          padding: EdgeInsets.only(bottom: 35.0),
+                          child: Icon(Icons.favorite),
                         ),
                       );
                     });
