@@ -40,29 +40,18 @@ class _HomePageState extends State<HomePage> {
                     itemBuilder: (context, index) {
                       final product = products[index];
                       return Card(
-                        child: Stack(
-                          children: [
-                            Container(
-                              child: Image.network(product.images![0])),
-                            Container(
-                              height: 20,
-                              child: Row(
-                                children: [
-                                  Text(product.title!),
-                                ],
-                              ),
+                          child: Column(
+                        children: [
+                          ListTile(
+                            leading: CircleAvatar(
+                              backgroundImage: NetworkImage(product.images![0]),
                             ),
-                            Text(product.description!),
-                          ],
-                        ),
-                      );
-                      // ListTile(
-                      //   leading: CircleAvatar(
-                      //     backgroundImage: NetworkImage(product.images![0]),
-                      //   ),
-                      //   title: Text("${product.title}"),
-                      //   subtitle: Text("${product.rating}"),
-                      // );
+                            title: Text("${product.title}"),
+                            subtitle: Text("${product.rating}"),
+                          ),
+                          Text(product.description!)
+                        ],
+                      ));
                     });
               }
               return Center(child: CircularProgressIndicator());
