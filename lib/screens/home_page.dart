@@ -57,22 +57,17 @@ class _HomePageState extends State<HomePage> {
                             Text(
                               product.brand!,
                               style: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.w500),
+                                  fontSize: 18, fontWeight: FontWeight.w400),
                             ),
                             Text(
                               product.title!,
                               style: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.w400),
-                            ),
-                            Text(
-                              product.category!,
-                              style: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.w400),
+                                  fontSize: 18, fontWeight: FontWeight.w600),
                             ),
                             Text(
                               product.description!,
                               style: TextStyle(
-                                  fontSize: 15, fontWeight: FontWeight.w300),
+                                  fontSize: 15, fontWeight: FontWeight.w400),
                             ),
                           ],
                         ),
